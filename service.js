@@ -1,4 +1,4 @@
-chrome.contextMenus.onClicked.addListener(openURL); // deprecated
+// chrome.contextMenus.onClicked.addListener(openURL); // deprecated
 chrome.commands.onCommand.addListener(openShortcut)
 
 function openURL(info) { // deprecated
@@ -27,6 +27,17 @@ function checkValidity(event, link, id) {
 };
 
 function openEmbed(link, id) {
+    if (link.includes("&t=")) {
+        link = link.substring(0, link.length - 1)
+        link = link.replace("&t=", "?start=")
+    }
+
+    if (true) {
+        l = link
+        l = l.replace("watch?v=", "embed/")
+        console.log(l)
+    }
+
     replaceVideo(link.replace("watch?v=", "embed/"), id)
 };
 
@@ -109,24 +120,24 @@ function returnErrors(link) {
 
 // REMOVED FOR NOW AS I HAVE NO NEED FOR A CONTEXTMENU OPTION
 // DEPRECATED UNTIL FURTHER NOTICE
-chrome.runtime.onInstalled.addListener(function() {
-    chrome.contextMenus.create({
-        title: "Yt-emb",
-        contexts: ["link"],
-        id: "contextTitle"
-    });
+// chrome.runtime.onInstalled.addListener(function() {
+//     chrome.contextMenus.create({
+//         title: "Yt-emb",
+//         contexts: ["link"],
+//         id: "contextTitle"
+//     });
 
-    chrome.contextMenus.create({
-        title: "Open as Embed",
-        contexts: ["link"],
-        parentId: "contextTitle",
-        id: "embed"
-    });
+//     chrome.contextMenus.create({
+//         title: "Open as Embed",
+//         contexts: ["link"],
+//         parentId: "contextTitle",
+//         id: "embed"
+//     });
 
-    chrome.contextMenus.create({
-        title: "Open as No-Cookie",
-        contexts: ["link"],
-        parentId: "contextTitle",
-        id: "cookie"
-    });
-});
+//     chrome.contextMenus.create({
+//         title: "Open as No-Cookie",
+//         contexts: ["link"],
+//         parentId: "contextTitle",
+//         id: "cookie"
+//     });
+// });
