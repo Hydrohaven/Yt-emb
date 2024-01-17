@@ -32,12 +32,6 @@ function openEmbed(link, id) {
         link = link.replace("&t=", "?start=")
     }
 
-    if (true) {
-        l = link
-        l = l.replace("watch?v=", "embed/")
-        console.log(l)
-    }
-
     replaceVideo(link.replace("watch?v=", "embed/"), id)
 };
 
